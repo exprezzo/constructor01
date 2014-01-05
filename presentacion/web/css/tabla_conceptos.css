@@ -1,0 +1,22 @@
+
+
+.tabla_conceptos{
+	font-family:"Open Sans", sans-serif;
+	font-size:11px;
+	border: 1px solid #6a6b6d;
+}
+
+.tabla_conceptos thead th{
+	background-color: #6a6b6d; color:#FFFFFF; padding:0; margin:0; 
+	font-size:12px;
+	text-align:center;
+}
+.tabla_conceptos tbody tr{
+	/*border-left: solid 1px #333333;
+	border-bottom: solid 1px #333333;*/
+}
+.tabla_conceptos tbody tr td{
+	background-color: #FFFFFF; color:#000000; padding:10px; margin:0; 
+	font-size:11px; vertical-align:middle;
+	border: 1px solid #6a6b6d;
+}
