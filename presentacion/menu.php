@@ -1,6 +1,7 @@
 <?php
-	require_once '../portal/modelos/catalogo_modelo.php';
-	require_once '../portal/modelos/modulo.php';
+	
+	require_once '../'.$_PETICION->modulo.'/modelos/catalogo_modelo.php';
+	require_once '../'.$_PETICION->modulo.'/modelos/modulo.php';
 	
 	$moduMod = new moduloModelo();
 	$modulos = $moduMod->buscar( array() );		

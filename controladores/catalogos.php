@@ -3,7 +3,7 @@ require_once $_PETICION->basePath.'/modelos/catalogo_modelo.php';
 include_once $_PETICION->basePath.'/modelos/modulo.php';
 require_once $_PETICION->basePath.'/modelos/elemento_modelo.php';
 require_once $_PETICION->basePath.'/modelos/modeloc_modelo.php';
-require_once $_PETICION->basePath.'/generador_marina/generador.php';
+require_once $APP_CONFIG['ruta_generador'].'generador.php';
 class catalogos extends Controlador{
 	var $modelo="Catalogo";	
 	
@@ -92,8 +92,8 @@ class catalogos extends Controlador{
 		$res=array(
 			'success'=>true,
 			'msg'=>'Plantilla Obtenida',
-			// 'datos'=>utf8_decode($buffer)
-			 'datos'=>$buffer
+			'datos'=>utf8_decode($buffer)
+			 // 'datos'=>$buffer
 		);
 		 echo json_encode( $res );
 		return $res;
@@ -167,8 +167,8 @@ class catalogos extends Controlador{
 	function mostrarVista( $archivos=""){
 		$vista= $this->getVista();
 		
-		global $_TEMA_APP;
-		global $_PETICION;
+		global $_TEMA_APP, $DB_CONFIG, $_PETICION;
+		
 		
 		$sql="SHOW TABLES";
 		$mod=$this->getModelo();
@@ -176,8 +176,10 @@ class catalogos extends Controlador{
 		 // print_r($res);
 		$tablas=array();
 		 foreach($res['datos'] as $tabla ){		
+		 // print_r($tabla);
+		 $db_name = $DB_CONFIG['DB_NAME'];
 			 $tablas[]=array(
-				'nombre'=>$tabla['Tables_in_constructor']
+				'nombre'=>$tabla['Tables_in_'.$db_name]
 			 );
 		 }	
 		$vista->tablas = $tablas;
